@@ -41,23 +41,39 @@ type Mutation {
 }
 
 input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """email of the user"""
+  email: String!
+
+  """Result of fibonaci for the user"""
+  fib: Int!
 }
 
 input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  """email of the user"""
+  email: String!
+
+  """Result of fibonaci for the user"""
+  fib: Int!
+
+  """id of the user"""
   id: Int!
 }
 
 input CreateAnagramInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """id of user"""
+  user_id: Int!
+
+  """json serialized map object"""
+  anagram_map: String!
 }
 
 input UpdateAnagramInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  """id of user"""
+  user_id: Int!
+
+  """json serialized map object"""
+  anagram_map: String!
+
+  """id of the anagram"""
   id: Int!
 }

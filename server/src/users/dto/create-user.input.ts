@@ -1,7 +1,16 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Int, Field, ArgsType } from '@nestjs/graphql';
+import { Contains, IsEmail, IsNumber } from 'class-validator';
 
 @InputType()
+@ArgsType()
 export class CreateUserInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+
+  @IsEmail()
+  @Contains('@zefir.fr')
+  @Field(() => String, { description: 'email of the user' })
+  email: string;
+
+  @IsNumber()
+  @Field(() => Int, { description: 'Result of fibonaci for the user' })
+  fib: number;
 }

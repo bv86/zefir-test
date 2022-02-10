@@ -1,9 +1,10 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { User } from '../../users';
-import { Column, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 
 @ObjectType()
+@Entity()
 export class Anagram {
   
   @PrimaryGeneratedColumn('increment')
