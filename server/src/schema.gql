@@ -1,0 +1,63 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """id of the user"""
+  id: Int!
+
+  """email of the user"""
+  email: String!
+
+  """Result of fibonaci for the user"""
+  fib: Int!
+}
+
+type Anagram {
+  """id of the anagram"""
+  id: Int!
+
+  """id of user"""
+  user_id: Int!
+
+  """json serialized map object"""
+  anagram_map: String!
+}
+
+type Query {
+  users: [User!]!
+  user(id: Int!): User!
+  anagrams: [Anagram!]!
+  anagram(id: Int!): Anagram!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createAnagram(createAnagramInput: CreateAnagramInput!): Anagram!
+  updateAnagram(updateAnagramInput: UpdateAnagramInput!): Anagram!
+  removeAnagram(id: Int!): Anagram!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateAnagramInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAnagramInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
