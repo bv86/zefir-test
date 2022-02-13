@@ -1,12 +1,16 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { User } from '../../users';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { truncateSync } from 'fs';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @ObjectType()
 @Entity()
 export class Anagram {
-  
   @PrimaryGeneratedColumn('increment')
   @Field(() => Int, { description: 'id of the anagram' })
   id: number;
@@ -19,6 +23,7 @@ export class Anagram {
   @Field(() => String, { description: 'json serialized map object' })
   anagram_map: string;
 
-  @OneToOne(() => User, {primary: true, cascade: true, onDelete: 'CASCADE'}) @JoinColumn({name: 'user_id'}) 
+  @OneToOne(() => User, { primary: true, cascade: true, onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }

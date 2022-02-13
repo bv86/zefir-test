@@ -1,6 +1,9 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Anagram } from '../../anagrams';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @ObjectType()
 @Entity()
@@ -9,12 +12,11 @@ export class User {
   @Field(() => Int, { description: 'id of the user' })
   id: number;
 
-  @Column({unique: true})
+  @Column({ unique: true })
   @Field(() => String, { description: 'email of the user' })
   email: string;
 
   @Column('int')
   @Field(() => Int, { description: 'Result of fibonaci for the user' })
   fib: number;
-
 }

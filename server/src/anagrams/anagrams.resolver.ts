@@ -9,7 +9,9 @@ export class AnagramsResolver {
   constructor(private readonly anagramsService: AnagramsService) {}
 
   @Mutation(() => Anagram)
-  createAnagram(@Args('createAnagramInput') createAnagramInput: CreateAnagramInput) {
+  createAnagram(
+    @Args('createAnagramInput') createAnagramInput: CreateAnagramInput,
+  ) {
     return this.anagramsService.create(createAnagramInput);
   }
 
@@ -24,13 +26,18 @@ export class AnagramsResolver {
   }
 
   @Mutation(() => Anagram)
-  updateAnagram(@Args('updateAnagramInput') updateAnagramInput: UpdateAnagramInput) {
-    return this.anagramsService.update(updateAnagramInput.id, updateAnagramInput);
+  updateAnagram(
+    @Args('updateAnagramInput') updateAnagramInput: UpdateAnagramInput,
+  ) {
+    return this.anagramsService.update(
+      updateAnagramInput.id,
+      updateAnagramInput,
+    );
   }
 
   @Mutation(() => Anagram)
   async removeAnagram(@Args('id', { type: () => Int }) id: number) {
     const anagram = await this.anagramsService.remove(id);
-    return Object.assign(anagram, {id});
+    return Object.assign(anagram, { id });
   }
 }

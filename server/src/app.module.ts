@@ -11,12 +11,17 @@ import { AnagramsModule } from './anagrams/anagrams.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: 'src/schema.gql'
+      autoSchemaFile: 'src/schema.gql',
+      subscriptions: {
+        'subscriptions-transport-ws': {
+          path: '/subscriptions'
+        },
+      }
     }),
     TypeOrmModule.forRoot({
       keepConnectionAlive: true,
       type: 'postgres',
-      host: 'localhost',
+      host: process.env['POSTGRES_HOST'] ?? 'localhost',
       port: 5432,
       username: 'postgres',
       password: 'WhyNo78Yet?',

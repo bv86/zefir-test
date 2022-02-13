@@ -6,6 +6,6 @@ import { Anagram } from './entities';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Anagram])],
-  providers: [AnagramsResolver, AnagramsService]
+  providers: [AnagramsResolver, AnagramsService],
 })
 export class AnagramsModule {}

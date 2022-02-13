@@ -75,3 +75,7 @@ input UpdateAnagramInput {
   """id of the anagram"""
   id: Int!
 }
+
+type Subscription {
+  userAdded: User!
+}

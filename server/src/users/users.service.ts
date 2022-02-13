@@ -9,17 +9,16 @@ import { User } from './entities';
  * Input required to create a user
  */
 export interface FullUserInput extends CreateUserInput {
-
   /** Result of a fibonacci sequence */
   fib: number;
 }
 
 @Injectable()
 export class UsersService {
-
-  constructor(@InjectRepository(User) 
-    private readonly userRepository: Repository<User>) {
-  }
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
 
   async create(userInput: FullUserInput) {
     const user = this.userRepository.create(userInput);

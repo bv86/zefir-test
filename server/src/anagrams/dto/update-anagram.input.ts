@@ -5,7 +5,6 @@ import { IsJSON, IsNumber, IsOptional } from 'class-validator';
 @InputType()
 @ArgsType()
 export class UpdateAnagramInput extends PartialType(CreateAnagramInput) {
-
   @IsNumber()
   @Field(() => Int, { description: 'id of the anagram' })
   id: number;

@@ -14,10 +14,6 @@ Since we'll need a PostgresSQL database, let's start with this.
 
 I'll use docker-compose to setup a local database.
 
-The `docker-compose.yml` is at the root of this project, and one can setup the database with the following command:
-
-    docker-compose up -d
-
 ## The server
 
 I bootstrapped a nest.js application using the nestjs cli with the following command:
@@ -30,5 +26,24 @@ I'll use the cli again for the barebone entity files I need and use typeorm for 
 
 For GraphQL, I'll follow the quickstart tutorial from nest.js <https://docs.nestjs.com/graphql/quick-start>
 
+## The frontend
+
+I used the cli to bootstrap a next.js application.
+
+I did not do something fancy, on the contrary, it's not styled and most components are in the same file.
+
+## What I did not do
+
+- write tests
+- merged the server part of next.js into the `server` project (apparently possible using nest-next library)
+- the pubsub implementation used here is not suited for production according to nestjs documentation
+- subscription is done only for added users and not for removed/updated users
 
 
+## testing
+
+One can test the full stack using docker-compose:
+
+    docker-compose up -d
+
+Then, navigate to http://localhost:3000

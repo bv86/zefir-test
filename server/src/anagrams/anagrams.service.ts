@@ -7,10 +7,10 @@ import { Anagram } from './entities';
 
 @Injectable()
 export class AnagramsService {
-
-  constructor(@InjectRepository(Anagram) 
-    private readonly anagramRepository: Repository<Anagram>) {
-  }
+  constructor(
+    @InjectRepository(Anagram)
+    private readonly anagramRepository: Repository<Anagram>,
+  ) {}
 
   async create(createAnagramInput: CreateAnagramInput) {
     const anagram = this.anagramRepository.create(createAnagramInput);

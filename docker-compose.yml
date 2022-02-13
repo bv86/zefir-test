@@ -9,3 +9,17 @@ services:
       POSTGRES_PASSWORD: WhyNo78Yet?
     volumes:
       - .docker-data/postgres:/var/lib/postgresql/data
+  server:
+    build: server
+    ports:
+      - "3001:3001"
+    volumes:
+      - /tmp:/tmp
+    environment:
+      - POSTGRES_HOST=db
+  front:
+    build: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - SERVER_HOSTNAME=server

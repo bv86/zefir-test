@@ -1,1 +1,1 @@
-export * from './anagram.entity'
+export * from './anagram.entity';

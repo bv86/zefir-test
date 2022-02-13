@@ -7,7 +7,10 @@ import { AnagramsService } from '../anagrams/anagrams.service';
 import { Anagram } from '../anagrams';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), TypeOrmModule.forFeature([Anagram])],
-  providers: [UsersResolver, UsersService, AnagramsService]
+  imports: [
+    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([Anagram]),
+  ],
+  providers: [UsersResolver, UsersService, AnagramsService],
 })
 export class UsersModule {}

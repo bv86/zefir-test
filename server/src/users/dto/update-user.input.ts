@@ -6,7 +6,6 @@ import { Contains, IsEmail, IsNumber } from 'class-validator';
 @InputType()
 @ArgsType()
 export class UpdateUserInput extends PartialType(CreateUserInput) {
-
   @IsNumber()
   @Field(() => Int, { description: 'id of the user' })
   id: number;
