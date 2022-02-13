@@ -29,7 +29,8 @@ export class AnagramsResolver {
   }
 
   @Mutation(() => Anagram)
-  removeAnagram(@Args('id', { type: () => Int }) id: number) {
-    return this.anagramsService.remove(id);
+  async removeAnagram(@Args('id', { type: () => Int }) id: number) {
+    const anagram = await this.anagramsService.remove(id);
+    return Object.assign(anagram, {id});
   }
 }

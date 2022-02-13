@@ -11,6 +11,7 @@ type User {
 
   """Result of fibonaci for the user"""
   fib: Int!
+  anagram: Anagram!
 }
 
 type Anagram {
@@ -43,20 +44,17 @@ type Mutation {
 input CreateUserInput {
   """email of the user"""
   email: String!
-
-  """Result of fibonaci for the user"""
-  fib: Int!
 }
 
 input UpdateUserInput {
   """email of the user"""
   email: String!
 
-  """Result of fibonaci for the user"""
-  fib: Int!
-
   """id of the user"""
   id: Int!
+
+  """Result of fibonaci for the user"""
+  fib: Int!
 }
 
 input CreateAnagramInput {

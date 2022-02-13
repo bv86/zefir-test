@@ -1,6 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Anagram } from '../../anagrams';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
@@ -16,4 +16,5 @@ export class User {
   @Column('int')
   @Field(() => Int, { description: 'Result of fibonaci for the user' })
   fib: number;
+
 }

@@ -1,7 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { User } from '../../users';
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
+import { truncateSync } from 'fs';
 
 @ObjectType()
 @Entity()
@@ -19,6 +19,6 @@ export class Anagram {
   @Field(() => String, { description: 'json serialized map object' })
   anagram_map: string;
 
-  @OneToOne(() => User, {primary: true, cascade: true}) @JoinColumn({name: 'user_id'}) 
+  @OneToOne(() => User, {primary: true, cascade: true, onDelete: 'CASCADE'}) @JoinColumn({name: 'user_id'}) 
   user: User;
 }

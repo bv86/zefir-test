@@ -1,9 +1,18 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { User } from './entities';
+
+/**
+ * Input required to create a user
+ */
+export interface FullUserInput extends CreateUserInput {
+
+  /** Result of a fibonacci sequence */
+  fib: number;
+}
 
 @Injectable()
 export class UsersService {
@@ -12,13 +21,13 @@ export class UsersService {
     private readonly userRepository: Repository<User>) {
   }
 
-  async create(createUserInput: CreateUserInput) {
-    const user = this.userRepository.create(createUserInput);
+  async create(userInput: FullUserInput) {
+    const user = this.userRepository.create(userInput);
     return await this.userRepository.save(user);
   }
 
-  async findAll() {
-    return await this.userRepository.find();
+  async findAll(options?: FindManyOptions<User>) {
+    return await this.userRepository.find(options);
   }
 
   async findOne(id: number) {

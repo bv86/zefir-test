@@ -10,7 +10,4 @@ export class CreateUserInput {
   @Field(() => String, { description: 'email of the user' })
   email: string;
 
-  @IsNumber()
-  @Field(() => Int, { description: 'Result of fibonaci for the user' })
-  fib: number;
 }

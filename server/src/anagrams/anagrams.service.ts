@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { CreateAnagramInput } from './dto/create-anagram.input';
 import { UpdateAnagramInput } from './dto/update-anagram.input';
 import { Anagram } from './entities';
@@ -17,8 +17,8 @@ export class AnagramsService {
     return await this.anagramRepository.save(anagram);
   }
 
-  async findAll() {
-    return await this.anagramRepository.find();
+  async findAll(options?: FindManyOptions<Anagram>) {
+    return await this.anagramRepository.find(options);
   }
 
   async findOne(id: number) {
@@ -42,6 +42,6 @@ export class AnagramsService {
 
   async remove(id: number) {
     const anagram = await this.findOne(id);
-    return await this.anagramRepository.remove(anagram);
+    return this.anagramRepository.remove(anagram);
   }
 }
