@@ -13,7 +13,7 @@ import { User } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { AnagramsService } from 'src/anagrams/anagrams.service';
-import { fibonacci, getRandomNumber, writeAnagramsFile } from '../tools';
+import { fastFibonacci, fibonacci, getRandomNumber, writeAnagramsFile } from '../tools';
 import { createReadStream, existsSync, readFile, unlinkSync } from 'fs';
 import { Anagram } from '../anagrams';
 import { v4 as uuidv4 } from 'uuid';
@@ -68,10 +68,8 @@ export class UsersResolver {
   @Mutation(() => User)
   async createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
     const random = getRandomNumber(50, 51);
-    /** With provided implementation, this is going to take a long time */
-    const fib = await fibonacci(random);
-    // for test purposes, you can use this faster implementation:
-    // const fib = await fastFibonacci(random)
+    /** Using a better version of the fibonacci series */
+    const fib = await fastFibonacci(random);
     const input = Object.assign(createUserInput, { fib });
     /** Generate a random, temporary file name */
     const uuid = uuidv4();

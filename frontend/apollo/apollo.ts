@@ -18,17 +18,21 @@ export interface GraphQlContext {
 }
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
-
+console.log(`starting with internal server hostname ${process.env['INTERNAL_SERVER_HOSTNAME'] ?? 'server'}`)
 
 const wsLink = typeof window !== 'undefined' ? new WebSocketLink({
-  uri: `ws://${process.env['SERVER_HOSTNAME'] ?? 'server'}/subscriptions`,
+  uri: `ws://${process.env['EXTERNAL_SERVER_HOSTNAME'] ?? 'localhost'}/subscriptions`,
   options: {
     reconnect: true
   }
 }) : undefined;
 
-const httpLink = new HttpLink({
-  uri: `http://${process.env['SERVER_HOSTNAME'] ?? 'server'}:3001/graphql`
+const internalHttpLink = new HttpLink({
+  uri: `http://${process.env['INTERNAL_SERVER_HOSTNAME'] ?? 'server'}:3001/graphql`
+});
+
+const externalHttpLink = new HttpLink({
+  uri: `http://${process.env['EXTERNAL_SERVER_HOSTNAME'] ?? 'localhost'}:3001/graphql`
 });
 
 // The split function takes three parameters:
@@ -44,8 +48,12 @@ const splitLink = split(
       definition.operation === 'subscription'
     );
   },
-  wsLink ?? httpLink,
-  httpLink,
+  wsLink ?? externalHttpLink,
+  split(
+    () => typeof window === 'undefined',
+    internalHttpLink,
+    externalHttpLink,
+  ),
 );
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

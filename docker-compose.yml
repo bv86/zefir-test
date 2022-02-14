@@ -22,4 +22,5 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - SERVER_HOSTNAME=server
+      - INTERNAL_SERVER_HOSTNAME=server
+      - EXTERNAL_SERVER_HOSTNAME=localhost
