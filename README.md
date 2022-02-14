@@ -38,7 +38,7 @@ I did not do something fancy, on the contrary, it's not styled and most componen
 - merged the server part of next.js into the `server` project (apparently possible using nest-next library)
 - the pubsub implementation used here is not suited for production according to nestjs documentation
 - subscription is done only for added users and not for removed/updated users
-
+- migrations are in automatic mode, it would be better to manage them manually according to documentation
 
 ## testing
 

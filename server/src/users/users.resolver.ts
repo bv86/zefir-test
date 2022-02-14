@@ -74,7 +74,7 @@ export class UsersResolver {
     /** Generate a random, temporary file name */
     const uuid = uuidv4();
     const path = `/tmp/${uuid}`;
-    console.log(`Will save temporary anagrams in ${path}`);
+    console.log(`Will save temporary anagrams to ${path}`);
     try {
       /** This also takes a long time and not necessary to calculate the anagram count */
       await new Promise((resolve, reject) => {

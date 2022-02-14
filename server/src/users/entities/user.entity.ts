@@ -16,7 +16,7 @@ export class User {
   @Field(() => String, { description: 'email of the user' })
   email: string;
 
-  @Column('int')
+  @Column('bigint')
   @Field(() => Int, { description: 'Result of fibonaci for the user' })
   fib: number;
 }
