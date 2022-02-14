@@ -21,7 +21,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 console.log(`starting with internal server hostname ${process.env['INTERNAL_SERVER_HOSTNAME'] ?? 'server'}`)
 
 const wsLink = typeof window !== 'undefined' ? new WebSocketLink({
-  uri: `ws://${process.env['EXTERNAL_SERVER_HOSTNAME'] ?? 'localhost'}/subscriptions`,
+  uri: `ws://${process.env['EXTERNAL_SERVER_HOSTNAME'] ?? 'localhost'}:3001/subscriptions`,
   options: {
     reconnect: true
   }
