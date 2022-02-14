@@ -27,11 +27,14 @@ const UsersList : FC<UsersListProps> = (props) => {
         </thead>
         <tbody>
             {(users.data.users as Array<any>).map((u, i) => 
-              {return (<tr key={i}>
+              {
+                const map = JSON.parse(u.anagram.anagram_map);
+                return (<tr key={i}>
                 <th>{u.email}</th>
                 <th>{u.fib}</th>
-                <th>{u.anagram.anagram_map}</th>
-              </tr>)})}
+                <th>{Object.keys(map).map((k: string) => (<div key={`${i}_${k}`}>{k}: {map[k]}</div>))}</th>
+              </tr>)
+            })}
         </tbody>
       </table>
     )

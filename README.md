@@ -39,6 +39,7 @@ I did not do something fancy, on the contrary, it's not styled and most componen
 - the pubsub implementation used here is not suited for production according to nestjs documentation
 - subscription is done only for added users and not for removed/updated users
 - migrations are in automatic mode, it would be better to manage them manually according to documentation
+- for the anagram map, because the same word can be picked multiple times, the anagram count can be more than !10, not sure if that's ok
 
 ## testing
 

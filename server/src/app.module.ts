@@ -6,6 +6,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { AnagramsModule } from './anagrams/anagrams.module';
+import { MysqlConnectionCredentialsOptions } from 'typeorm/driver/mysql/MysqlConnectionCredentialsOptions';
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { AnagramsModule } from './anagrams/anagrams.module';
       password: 'WhyNo78Yet?',
       database: 'postgres',
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: true
     }),
     UsersModule,
     AnagramsModule,

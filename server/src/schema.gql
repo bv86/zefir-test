@@ -10,7 +10,7 @@ type User {
   email: String!
 
   """Result of fibonaci for the user"""
-  fib: Int!
+  fib: Float!
   anagram: Anagram!
 }
 

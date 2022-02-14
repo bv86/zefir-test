@@ -1,10 +1,9 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, Field, Int, Float } from '@nestjs/graphql';
 import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-
 @ObjectType()
 @Entity()
 export class User {
@@ -16,7 +15,8 @@ export class User {
   @Field(() => String, { description: 'email of the user' })
   email: string;
 
+  /* Using float as return type because GraphQL Int is 32bit and too small */
   @Column('bigint')
-  @Field(() => Int, { description: 'Result of fibonaci for the user' })
+  @Field(() => Float, { description: 'Result of fibonaci for the user', })
   fib: number;
 }
